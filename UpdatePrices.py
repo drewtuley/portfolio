@@ -60,7 +60,7 @@ if __name__ == '__main__':
                             l_open, l_high, l_low, l_close = fixup([l_open, l_high, l_low, l_close])
                             iso_price_date = datetime.strftime(price_date, iso_date_format)
                             sql = insert_sql.format(google_cid=google_cid, iso_date=iso_price_date, open=l_open, high=l_high, low=l_low, close=l_close, volume=l_volume)
-                            logging.debug('insert sql:'.format(sql))
+                            logging.debug('insert sql: {}'.format(sql))
                             #print('{} {}'.format(l_date, price_date))
                             conn.execute(sql)
                         else:
