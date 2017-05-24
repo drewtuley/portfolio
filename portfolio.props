@@ -1,0 +1,18 @@
+[database]
+dir=data
+dbname=portfolio.db
+iso_date_format=%%Y%%m%%d
+insert_sql=insert into price select {google_cid}, {iso_date}, {open}, {high}, {low}, {close}, {volume};
+last_price_sql=select p.name, p.google_cid, max(pr.iso_date) from portfolio p left outer join price pr on p.google_cid = pr.google_cid group by p.name, p.google_cid;
+
+
+[logging]
+dir=log
+log_format=%%(asctime)s %%(message)s
+filename={dir}/portfolio_update_{dt}.log
+
+
+[google.finance]
+api=http://www.google.co.uk/finance/historical?cid={cid}&startdate={startdate}&enddate={enddate}&output=csv
+url_date_format={dt:%%b}+{dt.day},+{dt:%%Y}
+price_date_format=%%d-%%b-%%y
