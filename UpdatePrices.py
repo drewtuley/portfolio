@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 
 
+
 def fixup(vals):
     ret = []
     for v in vals:
