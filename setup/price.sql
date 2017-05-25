@@ -6,7 +6,7 @@ CREATE TABLE price (
  open float,
  high float,
  low float,
- clsoe float,
+ close float,
  volume int
 );
 CREATE UNIQUE INDEX price_idx on price(google_cid, iso_date);
